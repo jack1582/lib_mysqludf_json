@@ -1,3 +1,9 @@
+> change Log
+> 1. write a makefile for convinence
+> 2. fix the example case in json_object. (json_object names must set a alias name for column when they are json key)
+
+
+
 LIB\_MYSQLUDF\_JSON
 ===================
 
@@ -200,19 +206,19 @@ To obtain nested objects, use this function as an argument for `json_object`
 
 ```
 select      json_object(
-                f.last_update
+                f.last_update `as "last_update"`
             ,   json_members(
                     'film'
                 ,   json_object(
-                        f.film_id
-                    ,   f.title
-                    ,   f.last_update
+                        f.film_id "film_id"
+                    ,   f.title "titile"
+                    ,   f.last_update "last_update"
                     )
                 ,   'category'
                 ,   json_object(
-                        c.category_id
-                    ,   c.name
-                    ,   c.last_update
+                        c.category_id "category_id"
+                    ,   c.name "name"
+                    ,   c.last_update "last_update"
                     )
                 )
             ) as film_category
