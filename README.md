@@ -206,7 +206,7 @@ To obtain nested objects, use this function as an argument for `json_object`
 
 ```
 select      json_object(
-                f.last_update `as "last_update"`
+                f.last_update as "last_update"
             ,   json_members(
                     'film'
                 ,   json_object(
